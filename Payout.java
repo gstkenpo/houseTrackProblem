@@ -5,9 +5,9 @@ public class Payout {
     public void doPayout(int amount, HorseBo horseBo, List<BillBo> bills){
         List<BillBo> dispenses = initDispenses();
         int totalPayout = amount * horseBo.getOdds();
-        System.out.println("Payout: " + horseBo.getName() + ",$" + totalPayout);
         dispenses = calulateDispensing(totalPayout, bills, dispenses);
         if (dispenses != null) {
+            System.out.println("Payout: " + horseBo.getName() + ",$" + totalPayout);
             System.out.println("Dispensing:");
             dispenses.stream().sorted(Comparator.comparing(BillBo::getFaceValue)).forEach(System.out::println);
             for (int i = 0; i < bills.size(); i++){
